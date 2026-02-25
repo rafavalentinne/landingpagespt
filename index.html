@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="pt-PT" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cria Páginas de Vendas com IA | Acesso Vitalício</title>
+    <meta name="description" content="Aprende a criar páginas de vendas profissionais em 15 minutos com Inteligência Artificial. Sem código e com custo zero de alojamento no GitHub.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS: PREMIUM DARK MODE V11.0 (CONVERSÃO MÁXIMA) --- */
+        :root {
+            --primary: #00E676; 
+            --primary-dark: #00C853;
+            --primary-glow: rgba(0, 230, 118, 0.4);
+            --bg-dark: #050505;
+            --bg-card: #0F0F0F;
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --gradient-btn: linear-gradient(135deg, #00E676 0%, #00C853 100%);
+            --urgency-red: #ff4757;
+            --gold: #FFD700;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-main); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6; 
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; }
+        .text-center { text-align: center; }
+        .highlight { color: var(--primary); }
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; }
+        
+        .bg-glow-top {
+            position: absolute;
+            width: 100%; height: 500px;
+            background: radial-gradient(circle at top, rgba(0,230,118,0.12) 0%, rgba(0,0,0,0) 60%);
+            z-index: -1; pointer-events: none;
+        }
+
+        .top-banner {
+            background: linear-gradient(90deg, #10b981, #059669);
+            color: #fff; text-align: center; padding: 10px;
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.5px; position: sticky; top: 0; z-index: 1000;
+        }
+
+        .hero { padding: 80px 0 60px 0; text-align: center; }
+        
+        .badge {
+            display: inline-block; padding: 6px 16px; border-radius: 50px;
+            background: rgba(0, 230, 118, 0.1); color: var(--primary);
+            font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(0, 230, 118, 0.2);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 { 
+            font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; font-weight: 900;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { 
+            font-size: 1.25rem; color: var(--text-muted); max-width: 750px; margin: 0 auto 40px;
+        }
+
+        .profit-math {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .math-item { text-align: center; }
+        .math-item span { display: block; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
+        .math-item strong { font-size: 1.5rem; color: var(--primary); }
+
+        .btn-cta {
+            background: var(--gradient-btn); color: #000;
+            padding: 22px 40px; font-size: 1.2rem; font-weight: 800;
+            text-decoration: none; border-radius: 12px; display: inline-block;
+            box-shadow: 0 0 0 4px rgba(0, 230, 118, 0.2);
+            transition: all 0.3s ease; text-transform: uppercase;
+            border: none; cursor: pointer; width: 100%; max-width: 450px;
+            animation: pulse-green 2s infinite;
+        }
+        .btn-cta:hover { transform: translateY(-4px); box-shadow: 0 10px 40px rgba(0, 230, 118, 0.4); }
+
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 230, 118, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+        }
+
+        /* --- VIDEO WRAPPER + CONSENT PLACEHOLDER --- */
+        .video-section { padding: 40px 0 80px 0; background: #050505; }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 230, 118, 0.15);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            background: #000;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-consent {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(0,230,118,0.12) 0%, rgba(0,0,0,0.85) 60%);
+            color: #fff;
+        }
+        .video-consent-inner {
+            max-width: 520px;
+            background: rgba(15,15,15,0.75);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            padding: 22px;
+            backdrop-filter: blur(6px);
+        }
+        .video-consent-inner h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+        .video-consent-inner p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+        .btn-secondary {
+            display: inline-block;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.18);
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            background: rgba(255,255,255,0.06);
+            transition: 0.25s;
+            font-weight: 700;
+        }
+        .btn-secondary:hover { transform: translateY(-2px); border-color: rgba(0,230,118,0.5); }
+
+        .section-projects { padding: 80px 0; background: #0a0a0a; border-top: 1px solid #222; }
+        .grid-projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .project-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); transition: 0.3s; }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .project-img-wrapper { height: 220px; width: 100%; background: #1a1a1a; border-bottom: 1px solid rgba(255,255,255,0.05); overflow: hidden; }
+        .project-img-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .project-info { padding: 24px; }
+        .project-title { color: #fff; margin-bottom: 12px; font-size: 1.2rem; }
+        .project-stats { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); }
+        .stat-value { color: var(--primary); font-weight: bold; display: block; font-size: 1.1rem; }
+
+        /* --- SEÇÃO AUTOR & DEPOIMENTOS --- */
+        .author-box { background: rgba(0, 230, 118, 0.05); border: 1px solid rgba(0, 230, 118, 0.2); border-radius: 16px; padding: 40px; margin: 60px auto; max-width: 800px; display: flex; align-items: center; gap: 30px; }
+        .author-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); background: #222; }
+        .author-text h3 { color: #fff; margin-bottom: 10px; font-size: 1.5rem; }
+        .author-text p { color: var(--text-muted); line-height: 1.6; font-size: 1.05rem; }
+        
+        .testimonials { padding: 60px 24px; border-top: 1px solid #222; margin-top: 40px; }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1100px; margin: 40px auto 0; }
+        .test-card { background: #111; padding: 30px; border-radius: 12px; border: 1px solid #222; position: relative; }
+        .stars { color: var(--gold); margin-bottom: 15px; font-size: 1.2rem; }
+        .test-text { font-style: italic; color: #ddd; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.5; }
+        .test-author { display: flex; align-items: center; gap: 15px; }
+        .test-avatar { width: 45px; height: 45px; border-radius: 50%; background: #333; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); }
+        .test-name { font-weight: 600; font-size: 0.9rem; color: #fff; }
+        .test-role { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* --- PARA QUEM É / NÃO É --- */
+        .fit-section { padding: 70px 0; border-top: 1px solid #222; background: #050505; }
+        .fit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 28px; }
+        .fit-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 22px; }
+        .fit-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .fit-card ul { list-style: none; margin-top: 12px; }
+        .fit-card li { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); color: #ddd; }
+        .fit-card li:last-child { border-bottom: none; }
+        .fit-icon { min-width: 18px; font-weight: 900; }
+        .fit-yes .fit-icon { color: var(--primary); }
+        .fit-no .fit-icon { color: var(--urgency-red); }
+
+        /* --- ANCORAGEM DE PREÇO (NOVO) --- */
+        .value-stack { background: rgba(255,255,255,0.02); border-radius: 12px; padding: 24px; margin: 30px 0; border: 1px dashed rgba(255,255,255,0.1); }
+        .value-item { display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 1rem; color: #ddd; align-items: center; }
+        .value-item:last-of-type { border-bottom: 1px solid #333; padding-bottom: 14px; }
+        .value-total { display: flex; justify-content: space-between; margin-top: 14px; font-size: 1.1rem; color: var(--text-muted); align-items: center; }
+        .strike-price { text-decoration: line-through; color: var(--urgency-red); font-weight: bold; font-size: 1.2rem; }
+
+        .offer-box { background: radial-gradient(circle at center, #151515 0%, #050505 100%); border: 1px solid var(--primary); box-shadow: 0 0 50px rgba(0,230,118,0.1); border-radius: 24px; padding: 40px; margin: 60px auto 0; max-width: 750px; }
+        .update-box { background: rgba(255, 215, 0, 0.1); border: 1px solid var(--gold); color: var(--gold); padding: 16px; border-radius: 12px; margin-bottom: 25px; text-align: left; display: flex; gap: 15px; align-items: center; }
+        .pulse-dot { min-width: 12px; height: 12px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 0 rgba(255, 215, 0, 0.4); animation: pulse-gold 2s infinite; }
+        
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.6); }
+            70% { box-shadow: 0 0 0 14px rgba(255, 215, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+
+        .check-list { list-style: none; margin: 30px 0; }
+        .check-list li { margin-bottom: 15px; font-size: 1.05rem; display: flex; align-items: flex-start; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; text-align: left; }
+        .check-icon { color: var(--primary); min-width: 20px; font-weight: bold; }
+
+        .price-display { margin: 20px 0 30px 0; }
+        .price-new { font-size: 4rem; font-weight: 900; color: #fff; line-height: 1; letter-spacing: -2px; }
+        .price-sub { font-size: 0.9rem; color: var(--text-muted); margin-top: 5px; }
+
+        details { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+        details[open] { border-color: var(--primary); background: rgba(0,230,118,0.05); }
+        summary { padding: 20px; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; }
+        summary::after { content: '+'; color: var(--primary); font-size: 1.5rem; }
+        details[open] summary::after { content: '-'; }
+        .faq-text { padding: 0 20px 20px; color: var(--text-muted); line-height: 1.6; }
+
+        footer { border-top: 1px solid #222; padding: 40px 0; margin-top: 60px; font-size: 0.9rem; color: #666; }
+        footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
+
+        #cookie-banner { position: fixed; bottom: 20px; left: 20px; max-width: 360px; background: #111; border: 1px solid #333; padding: 18px; border-radius: 12px; z-index: 9999; box-shadow: 0 10px 40px rgba(0,0,0,0.8); display: none; }
+
+        .cookie-links { margin-top: 10px; font-size: 0.8rem; color: #888; }
+        .cookie-links a { color: #9ca3af; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .price-new { font-size: 3rem; }
+            .offer-box { padding: 24px; }
+            .grid-projects { grid-template-columns: 1fr; }
+            .profit-math { flex-direction: column; align-items: center; }
+            .video-wrapper { margin: 0 -10px; border-radius: 8px; }
+            .author-box { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .top-banner { position: relative; } /* Remove sticky no mobile para não ocupar a tela */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-top"></div>
+
+    <div class="top-banner">
+        🔥 Lote de Lançamento: Acesso Vitalício por 19,90€ — até 28/02/2026
+    </div>
+
+    <header class="hero container">
+        <span class="badge">🚀 Tecnologia IA de Ponta 2026</span>
+        
+        <h1 class="text-gradient">
+            Cria Páginas de Vendas<br>
+            <span class="highlight">Profissionais com IA</span>
+        </h1>
+        
+        <p>
+            O método "Copiar e Colar" para criares sites de alta conversão sem saberes programar. 
+            <strong>Domina a Inteligência Artificial</strong> para o teu negócio ou fatura vendendo páginas para clientes locais em Portugal.
+        </p>
+
+        <div class="profit-math">
+            <div class="math-item"><span>Mensalidade de Alojamento</span><strong>0,00€ (GitHub)</strong></div>
+            <div class="math-item"><span>Velocidade de Entrega</span><strong>15 Minutos</strong></div>
+            <div class="math-item"><span>Design & Estética</span><strong>Premium</strong></div>
+            <div class="math-item"><span>Configuração</span><strong>Zero Código</strong></div>
+        </div>
+
+        <div>
+            <a href="https://pay.hotmart.com/H104486392E?off=rikubi6w&checkoutMode=10" 
+               onclick="trackInitiateCheckout('Botao Hero')" 
+               class="btn-cta">
+                Garantir o Meu Acesso Imediato
+            </a>
+            <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">🔒 Pagamento Seguro • Garantia Incondicional de 14 Dias</p>
+            <p style="margin-top: 8px; font-size: 0.78rem; color: #666;">*Resultados variam consoante execução e contexto do negócio.</p>
+        </div>
+    </header>
+
+    <section class="video-section container">
+        <h2 class="text-center" style="margin-bottom: 30px; font-size: 1.8rem;">
+            Vê como funciona na prática <span style="color: var(--primary);">(Apenas 2 minutos)</span> 👇
+        </h2>
+
+        <div class="video-wrapper" id="videoWrapper">
+            <!-- O iframe do YouTube só é injetado após consentimento -->
+            <div class="video-consent" id="videoConsent">
+                <div class="video-consent-inner">
+                    <h3>Vídeo bloqueado por privacidade 🍪</h3>
+                    <p>Para veres o vídeo, precisamos do teu consentimento para carregar conteúdo do YouTube e medir desempenho.</p>
+                    <button class="btn-secondary" onclick="openCookieBanner()">Aceitar cookies e ver vídeo</button>
+                    <div style="margin-top: 10px; font-size: 0.8rem; color: #888;">
+                        Podes recusar — o curso continua disponível.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-projects">
+        <div class="container">
+            <h2 class="text-center">Vê o que vais aprender a criar:</h2>
+            <div class="grid-projects">
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img loading="lazy" width="1200" height="800" src="barberia.png" alt="Landing Page Barbearia">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Barbearia Profissional</h3>
+                        <div class="project-stats">
+                            <div>Esforço da IA:<br><span class="stat-value">18 min</span></div>
+                            <div style="text-align: right;">Potencial de Venda:<br><span class="stat-value">250€</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img loading="lazy" width="1200" height="800" src="hamburguesa.png" alt="Cardápio Hamburgueria">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Restaurantes & Takeaway</h3>
+                        <div class="project-stats">
+                            <div>Esforço da IA:<br><span class="stat-value">25 min</span></div>
+                            <div style="text-align: right;">Potencial de Venda:<br><span class="stat-value">300€</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img loading="lazy" width="1200" height="800" src="pestanas.png" alt="Site Studio de Cílios">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Estética & Bem-Estar</h3>
+                        <div class="project-stats">
+                            <div>Esforço da IA:<br><span class="stat-value">15 min</span></div>
+                            <div style="text-align: right;">Potencial de Venda:<br><span class="stat-value">280€</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials container">
+        <h2 class="text-center">O que dizem os nossos primeiros alunos:</h2>
+        <div class="testimonial-grid">
+            <div class="test-card">
+                <div class="stars">★★★★★</div>
+                <p class="test-text">"Sempre me pediram 500€ para fazer o site do meu restaurante. Com este método, fiz eu mesmo num domingo à tarde. A melhor parte é não pagar mensalidade de alojamento."</p>
+                <div class="test-author">
+                    <div class="test-avatar">JM</div>
+                    <div>
+                        <div class="test-name">João M., Porto</div>
+                        <div class="test-role">Dono de Restaurante</div>
+                    </div>
+                </div>
+            </div>
+            <div class="test-card">
+                <div class="stars">★★★★★</div>
+                <p class="test-text">"Nunca escrevi uma linha de código na vida. Segui os comandos da IA que o Rafael ensina e já vendi a minha primeira página para uma clínica aqui na zona por 250€."</p>
+                <div class="test-author">
+                    <div class="test-avatar">CS</div>
+                    <div>
+                        <div class="test-name">Carla S., Lisboa</div>
+                        <div class="test-role">Freelancer, 38 anos</div>
+                    </div>
+                </div>
+            </div>
+            <div class="test-card">
+                <div class="stars">★★★★★</div>
+                <p class="test-text">"Achei que era mentira a parte dos 15 minutos. A IA praticamente cuspiu o site da minha barbearia pronto. Só tive de mudar as fotos e o contacto. Recomendo muito!"</p>
+                <div class="test-author">
+                    <div class="test-avatar">TF</div>
+                    <div>
+                        <div class="test-name">Tiago F., Braga</div>
+                        <div class="test-role">Barbeiro, 45 anos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="author-box">
+            <img loading="lazy" width="240" height="240" src="rafael.png" alt="Rafael Barros" class="author-img">
+            <div class="author-text">
+                <h3>Com quem vais aprender?</h3>
+                <p>Sou o <strong>Rafael Barros</strong>, Desenvolvedor Full Stack. Criei este método para que qualquer pessoa possa usar a Inteligência Artificial para lucrar, sem ter de estudar código complexo durante anos. A minha missão é entregar-te um processo validado para colocares a tua página no ar hoje mesmo, sem dores de cabeça.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 60px 24px; background: #0a0a0a; border-radius: 16px; margin: 60px auto; border: 1px solid #222;">
+        <h2 class="text-center" style="margin-bottom: 10px;">Conteúdo do Curso (Acesso Vitalício)</h2>
+        <p class="text-center" style="color: var(--text-muted); margin-bottom: 30px;">
+            Directo ao ponto: aprendes a criar, ajustar e publicar — e ainda a vender como serviço em Portugal.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <details>
+                <summary>MÓDULO 1 – Introdução às Landing Pages</summary>
+                <div class="faq-text">
+                    • O que é uma Landing Page<br>
+                    • Onde usar Landing Pages
+                </div>
+            </details>
+
+            <details>
+                <summary>MÓDULO 2 – Planeamento com IA</summary>
+                <div class="faq-text">
+                    • Pensando a Página antes de Criar<br>
+                    • Criando a Estrutura com IA
+                </div>
+            </details>
+
+            <details>
+                <summary>MÓDULO 3 – Criando a Página com IA</summary>
+                <div class="faq-text">
+                    • Gerando a Landing Page<br>
+                    • Ajustes que Aumentam Conversão
+                </div>
+            </details>
+
+            <details>
+                <summary>MÓDULO 4 – Publicando a Página</summary>
+                <div class="faq-text">
+                    • Colocando a tua Landing Page no Ar
+                </div>
+            </details>
+
+            <details>
+                <summary>MÓDULO 5 – Como Ganhar Dinheiro com Isto</summary>
+                <div class="faq-text">
+                    • Como Ganhar Dinheiro com Isto<br>
+                    • Quanto Cobrar<br>
+                    • Como Vender
+                </div>
+            </details>
+
+            <details>
+                <summary>BÔNUS ESTRATÉGICO</summary>
+                <div class="faq-text">
+                    • Templates de Landing Page<br>
+                    • Pack de Prompts Prontos<br>
+                    • Checklist “Página no Ar”
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="fit-section">
+        <div class="container">
+            <h2 class="text-center">Isto é para ti?</h2>
+            <div class="fit-grid">
+                <div class="fit-card fit-yes">
+                    <h3>✅ É para ti se...</h3>
+                    <ul>
+                        <li><span class="fit-icon">✓</span> Queres criar uma landing page para o teu negócio sem programar</li>
+                        <li><span class="fit-icon">✓</span> Queres vender páginas a negócios locais (restaurantes, estética, barbearias)</li>
+                        <li><span class="fit-icon">✓</span> Preferes um processo simples: “copiar e colar” + passo a passo</li>
+                        <li><span class="fit-icon">✓</span> Queres alojamento gratuito (GitHub) sem mensalidades</li>
+                    </ul>
+                </div>
+                <div class="fit-card fit-no">
+                    <h3>❌ Não é para ti se...</h3>
+                    <ul>
+                        <li><span class="fit-icon">✕</span> Queres “dinheiro fácil” sem executar</li>
+                        <li><span class="fit-icon">✕</span> Procuras um curso avançado de programação</li>
+                        <li><span class="fit-icon">✕</span> Não queres seguir um roteiro (mesmo sendo curto)</li>
+                        <li><span class="fit-icon">✕</span> Queres algo 100% automático sem personalizar imagens/contactos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="margin-top: 60px;">
+        <div class="offer-box">
+            <h2 class="text-center" style="margin-bottom: 25px;">Tudo o que recebes hoje:</h2>
+            <div class="update-box">
+                <div class="pulse-dot"></div>
+                <div class="update-text"><strong>Curso 100% Atualizado (2026)</strong><br><span style="font-size: 0.85rem;">Novas aulas e prompts adicionados regularmente.</span></div>
+            </div>
+            
+            <ul class="check-list">
+                <li><span class="check-icon">✓</span> Acesso Vitalício às Vídeo-Aulas</li>
+                <li><span class="check-icon">✓</span> Pack de Prompts "Copia e Cola"</li>
+                <li><span class="check-icon">✓</span> Guia Passo a Passo: Alojamento no GitHub</li>
+                <li><span class="check-icon">🎁</span> Bónus: Estratégia de Vendas para Portugal</li>
+                <li><span class="check-icon">🎁</span> Suporte via Área de Membros</li>
+            </ul>
+
+            <div class="value-stack">
+                <div class="value-item"><span>📦 Curso Landing Pages IA</span> <span>97,00€</span></div>
+                <div class="value-item"><span>🎁 Pack de Prompts "Copia e Cola"</span> <span>47,00€</span></div>
+                <div class="value-item"><span>🎁 Script de Vendas (Portugal)</span> <span>39,00€</span></div>
+                <div class="value-item"><span>🎁 Guia: Alojamento Zero Custo</span> <span>29,00€</span></div>
+                <div class="value-total"><span>Valor Total:</span> <span class="strike-price">212,00€</span></div>
+            </div>
+
+            <div class="text-center price-display">
+                <div class="price-new">19,90€</div>
+                <div class="price-sub">Pagamento Único • Sem Taxas Escondidas</div>
+            </div>
+            
+            <div class="text-center">
+                <a href="https://pay.hotmart.com/H104486392E?off=rikubi6w&checkoutMode=10" 
+                   onclick="trackInitiateCheckout('Botao Oferta')" 
+                   class="btn-cta" style="width: 100%;">
+                   Inscrever-me Agora e Poupar 90%
+                </a>
+                <div style="margin-top: 25px;">
+                    <p style="font-size: 0.85rem; color: #fff; margin-bottom: 10px;">Métodos de Pagamento em Portugal:</p>
+                    <strong style="color: var(--primary); font-size: 0.9rem;">MB WAY • Multibanco • Cartão • PayPal • Klarna</strong>
+                </div>
+                <div style="margin-top: 20px; font-size: 0.75rem; color: #666; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                    <span>🛡️</span> Compra 100% segura processada pela <b>Hotmart</b>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 80px 24px; text-align: center; border-top: 1px solid #222; margin-top: 80px;">
+        <h2 style="margin-bottom: 40px;">Perguntas Frequentes (FAQ)</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+            <details><summary>Como recebo o acesso ao curso?</summary><div class="faq-text">O acesso é imediato! Recebes um e-mail da Hotmart assim que o pagamento for confirmado.</div></details>
+            <details><summary>Preciso de pagar alojamento mensal?</summary><div class="faq-text">Não. Ensinamos a usar o GitHub, o que é 100% gratuito para sempre.</div></details>
+            <details><summary>Preciso pagar o ChatGPT Plus (versão paga)?</summary><div class="faq-text">Não! Todo o método foi desenhado para funcionar perfeitamente com as versões gratuitas das Inteligências Artificiais. Não terás custos extras.</div></details>
+            <details><summary>Nunca fiz um site na vida, isto é para mim?</summary><div class="faq-text">Absolutamente. O método é "Copiar e Colar". A IA escreve o código por ti e só precisas de seguir o nosso passo a passo em vídeo para colocar tudo no ar.</div></details>
+            <details><summary>Posso pagar com MB WAY?</summary><div class="faq-text">Sim! Aceitamos MB WAY, Multibanco, Cartões e PayPal através da plataforma 100% segura da Hotmart.</div></details>
+            <details><summary>Tenho garantia se não gostar?</summary><div class="faq-text">Sim. Oferecemos 14 dias de garantia incondicional.</div></details>
+        </div>
+    </section>
+
+    <footer class="text-center container">
+        <p>© 2026 - Método IA Pro. Todos os direitos reservados.</p>
+        <div style="margin-top: 10px; font-size: 0.85rem; color: #777;">
+            <!-- Troca pelo teu email real -->
+            Contacto: <span style="color:#9ca3af;">suporte@teudominio.pt</span>
+        </div>
+        <div style="margin-top: 15px; font-size: 0.8rem;">
+            <a href="privacidade.html">Privacidade</a> • <a href="termos.html">Termos</a>
+        </div>
+    </footer>
+
+    <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Preferências de cookies">
+        <h4 style="color: #fff; margin-bottom: 8px;">🍪 A tua privacidade</h4>
+        <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 12px;">
+            Usamos cookies para medir o sucesso dos nossos anúncios e melhorar a experiência (Pixel, Clarity e ferramentas de UTM).
+        </p>
+        <div style="display: flex; gap: 10px;">
+            <button onclick="acceptCookies()" style="flex: 1; background: var(--primary); color: #000; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;">Aceitar</button>
+            <button onclick="rejectCookies()" style="flex: 1; background: transparent; border: 1px solid #444; color: #fff; padding: 10px; border-radius: 8px; cursor: pointer;">Recusar</button>
+        </div>
+        <div class="cookie-links">
+            <a href="privacidade.html">Ler Política de Privacidade</a>
+        </div>
+    </div>
+
+    <script>
+        // -------------------------------
+        // CONSENT / TRACKING (RGPD SAFE)
+        // -------------------------------
+
+        function openCookieBanner() { 
+            document.getElementById('cookie-banner').style.display = 'block'; 
+        }
+        function closeCookieBanner() { 
+            document.getElementById('cookie-banner').style.display = 'none'; 
+        }
+
+        function loadClarity() {
+            if (window.__clarityLoaded) return;
+            window.__clarityLoaded = true;
+
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "vkcwdeck54");
+        }
+
+        function loadMetaPixel() {
+            if (window.__pixelLoaded) return;
+            window.__pixelLoaded = true;
+
+            !function(f,b,e,v,n,t,s){
+                if(f.fbq)return;
+                n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;
+                n.push=n;
+                n.loaded=!0;
+                n.version='2.0';
+                n.queue=[];
+                t=b.createElement(e);t.async=!0;t.src=v;
+                s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s);
+            }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+            fbq('init', '940262381630522');
+            fbq('track', 'PageView');
+        }
+
+        function loadUtmify() {
+            if (window.__utmifyLoaded) return;
+            window.__utmifyLoaded = true;
+
+            var script = document.createElement('script');
+            script.src = "https://cdn.utmify.com.br/scripts/utms/latest.js";
+            script.async = true; 
+            script.defer = true;
+            document.head.appendChild(script);
+        }
+
+        function loadTrackingScripts() {
+            // Carrega tudo o que é tracking SOMENTE após consentimento.
+            loadMetaPixel();
+            loadClarity();
+            loadUtmify();
+        }
+
+        function loadYouTubeVideo() {
+            if (window.__ytLoaded) return;
+            window.__ytLoaded = true;
+
+            const wrapper = document.getElementById('videoWrapper');
+            const consentLayer = document.getElementById('videoConsent');
+
+            if (consentLayer) consentLayer.style.display = 'none';
+
+            const iframe = document.createElement('iframe');
+            iframe.loading = 'lazy';
+            iframe.src = "https://www.youtube-nocookie.com/embed/w-BooQsuQzY?rel=0&modestbranding=1";
+            iframe.title = "Demonstração Prática - Sites com IA";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.allowFullscreen = true;
+
+            wrapper.appendChild(iframe);
+        }
+
+        function acceptCookies() { 
+            localStorage.setItem('cookiesAccepted', 'true'); 
+            closeCookieBanner(); 
+            loadTrackingScripts(); 
+            loadYouTubeVideo();
+        }
+
+        function rejectCookies() { 
+            localStorage.setItem('cookiesAccepted', 'false'); 
+            closeCookieBanner(); 
+            // Mantém tracking OFF e vídeo bloqueado
+        }
+
+        function initConsent() {
+            const consent = localStorage.getItem('cookiesAccepted');
+            if (consent === 'true') {
+                loadTrackingScripts();
+                loadYouTubeVideo();
+            } else if (consent !== 'false') {
+                openCookieBanner();
+            }
+        }
+
+        // Tracking do botão: só dispara se o Pixel foi autorizado e carregado
+        function trackInitiateCheckout(origin) {
+            try {
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'InitiateCheckout', { 
+                        value: 19.90, 
+                        currency: 'EUR', 
+                        content_name: 'Curso Pagina de Vendas IA - PT', 
+                        content_category: origin 
+                    });
+                }
+            } catch (e) {}
+        }
+
+        initConsent();
+    </script>
+</body>
+</html>
