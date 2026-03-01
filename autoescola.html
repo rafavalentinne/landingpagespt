@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola de Condução Via Segura - A sua Carta em Lisboa</title>
+    <style>
+        /* --- CSS: Design Persuasivo, Limpo e Focado em Conversão --- */
+        :root {
+            --primary-color: #FFC107; /* Amarelo (Atenção/Trânsito) */
+            --primary-dark: #ffa000;
+            --secondary-color: #212121;  /* Preto Fundo */
+            --accent-red: #D32F2F; /* Urgência/Oferta */
+            --whatsapp-green: #25D366; 
+            --text-color: #333;
+            --bg-light: #f4f6f8;
+            --card-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { line-height: 1.6; color: var(--text-color); background-color: #fff; }
+
+        /* Utilitários */
+        .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; }
+        .text-center { text-align: center; }
+        .bold { font-weight: bold; }
+        .red-text { color: var(--accent-red); }
+        
+        /* --- 1. BARRA DE URGÊNCIA (ESTÁTICA E ELEGANTE) --- */
+        .top-bar {
+            background-color: var(--accent-red);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: sticky; /* Fica presa no topo ao rolar */
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Header */
+        header { background: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: relative; z-index: 99; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--secondary-color); text-transform: uppercase; letter-spacing: -1px; display: flex; flex-direction: column; line-height: 1; }
+        .logo span { color: var(--primary-color); }
+        .logo small { font-size: 0.7rem; color: #666; font-weight: 400; text-transform: none; letter-spacing: 0; margin-top: 3px; }
+
+        /* Botão CTA Padrão */
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--whatsapp-green);
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); background-color: #1ebc57; }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--whatsapp-green);
+            color: var(--whatsapp-green);
+            margin-top: 10px;
+        }
+        .btn-outline:hover { background: #e8f5e9; }
+
+        /* Animação Pulse Suave */
+        .pulse { animation: pulse-animation 2s infinite; }
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- 2. HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1580273916550-e323be2ed5d6?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0 140px 0;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); 
+        }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 20px; line-height: 1.1; font-weight: 800; }
+        .hero p { font-size: 1.2rem; margin-bottom: 35px; opacity: 0.95; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .hero-tag { background: var(--primary-color); color: var(--secondary-color); padding: 5px 15px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 20px; display: inline-block; }
+
+        /* --- 3. SEÇÃO DE OFERTA (FLEET) --- */
+        .fleet { padding: 60px 0 80px 0; background: #fff; margin-top: -80px; position: relative; z-index: 2; }
+        .fleet h2 { text-align: center; margin-bottom: 10px; color: var(--secondary-color); font-size: 2.2rem; }
+        .fleet-subtitle { text-align: center; margin-bottom: 50px; color: #666; max-width: 700px; margin-left: auto; margin-right: auto; }
+        
+        .fleet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        
+        .fleet-card {
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            background: white;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .fleet-card:hover { transform: translateY(-10px); border-color: var(--primary-color); }
+        
+        /* Tag de Desconto */
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent-red);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .fleet-img { width: 100%; height: 200px; object-fit: cover; }
+
+        .fleet-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .cat-title { font-size: 1.4rem; color: var(--secondary-color); margin-bottom: 5px; font-weight: 800; }
+        .cat-desc { font-size: 0.9rem; color: #666; margin-bottom: 20px; line-height: 1.5; }
+
+        /* Bloco de Preço */
+        .price-block {
+            background-color: #fafafa;
+            border-top: 1px dashed #ddd;
+            padding-top: 15px;
+            margin-top: auto;
+            text-align: center;
+        }
+        .old-price { font-size: 0.9rem; color: #aaa; text-decoration: line-through; display: block; margin-bottom: 2px; }
+        .new-price { font-size: 1.1rem; color: var(--secondary-color); font-weight: 800; line-height: 1.2; }
+        .highlight-price { font-size: 2.2rem; color: var(--accent-red); font-weight: 900; }
+        .installments { font-size: 0.85rem; color: #555; margin-bottom: 15px; display: block; font-weight: 600; }
+
+        /* --- 4. DIFERENCIAIS --- */
+        .features { padding: 80px 0; background: var(--bg-light); }
+        .features h2 { text-align: center; margin-bottom: 50px; font-size: 2rem; color: var(--secondary-color); }
+        .features-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px; 
+        }
+
+        @media (max-width: 990px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+        
+        .feature-item { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            text-align: left;
+            border-bottom: 4px solid var(--primary-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .feature-icon { font-size: 2rem; margin-bottom: 15px; display: block; }
+        .feature-item h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--secondary-color); font-weight: 700; }
+        .feature-item p { font-size: 0.95rem; color: #666; }
+
+        /* --- 5. FAQ --- */
+        .faq { padding: 80px 0; background: white; }
+        .faq h2 { text-align: center; margin-bottom: 40px; color: var(--secondary-color); font-size: 2rem; }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        
+        details {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: all 0.3s;
+        }
+        details[open] { border-left: 5px solid var(--primary-color); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        summary { font-weight: 700; cursor: pointer; list-style: none; font-size: 1.1rem; color: var(--secondary-color); display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: '+'; font-size: 1.5rem; color: var(--primary-color); font-weight: bold; }
+        details[open] summary::after { content: '-'; }
+        .faq-answer { margin-top: 15px; color: #555; line-height: 1.6; }
+
+        /* --- 6. PROVA SOCIAL --- */
+        .social-proof { background-color: var(--secondary-color); color: white; padding: 80px 0; }
+        .social-proof h2 { text-align: center; margin-bottom: 50px; color: var(--primary-color); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .testimonial-card { 
+            background: rgba(255,255,255,0.05); 
+            padding: 30px; 
+            border-radius: 10px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .testimonial-card p { font-style: italic; opacity: 0.9; margin-bottom: 20px; font-size: 0.95rem; }
+        .client-name { font-weight: bold; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
+        .client-badge { background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; color: #fff; text-transform: uppercase; }
+
+        /* Footer */
+        footer { background: #1a1a1a; color: #888; padding: 40px 0; text-align: center; font-size: 0.9rem; border-top: 1px solid #333; }
+
+        /* --- 7. BOTÃO FLUTUANTE COM TOOLTIP --- */
+        .floating-wpp-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .wpp-tooltip {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #333;
+            animation: fadeIn 0.5s ease-out 2s forwards;
+            opacity: 0;
+            display: none;
+        }
+        @media (min-width: 768px) { .wpp-tooltip { display: block; } }
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        .floating-wpp { 
+            background-color: var(--whatsapp-green); 
+            width: 65px; height: 65px; 
+            border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            transition: all 0.3s ease; 
+        }
+        .floating-wpp:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
+        .wpp-icon { width: 35px; height: 35px; fill: white; }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .fleet { margin-top: 0; }
+            .hero { clip-path: none; padding-bottom: 60px; }
+            .nav-flex { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        🔥 ÚLTIMAS VAGAS COM A TABELA DE PREÇOS ATUAL! GARANTA O SEU LUGAR HOJE.
+    </div>
+
+    <header>
+        <div class="container nav-flex">
+            <div class="logo">
+                <div>Escola de Condução <span>Via Segura</span></div>
+                <small>📍 Lisboa - Centro</small>
+            </div>
+            <a href="#" onclick="openWhatsApp('Geral Header')" style="text-decoration: none; color: var(--text-color); font-weight: 600; font-size: 1rem; display: flex; align-items: center; gap: 5px;">
+                <span style="color: var(--whatsapp-green);">●</span> (+351) 912 345 678
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <span class="hero-tag">A formar condutores na Grande Lisboa</span>
+            <h1>Deixe de depender de boleias e transportes. Conquiste a sua independência.</h1>
+            <p>Tire a sua Carta de Condução com facilidades de pagamento. Aulas práticas em viaturas modernas e instrutores com paciência de santo.</p>
+            
+            <a href="#" onclick="openWhatsApp('Simular Pagamento Hero')" class="btn-cta pulse">
+                🚗 Quero Simular o Pagamento
+            </a>
+            <br>
+            <small style="color: #ddd; margin-top: 15px; display: block;">🔒 Mais de 2.000 alunos aprovados à primeira</small>
+        </div>
+    </section>
+
+    <section class="fleet">
+        <div class="container">
+            <h2>Escolha a sua Liberdade</h2>
+            <p class="fleet-subtitle">Sem letras pequeninas: Valores transparentes para começar a tirar o código hoje mesmo.</p>
+            
+            <div class="fleet-grid">
+                
+                <div class="fleet-card">
+                    <span class="discount-badge">MAIS RÁPIDO</span>
+                    <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80" alt="Carta de Mota Lisboa" class="fleet-img">
+                    <div class="fleet-content">
+                        <h3 class="cat-title">Categoria A (Mota)</h3>
+                        <p class="cat-desc">Deixe de perder horas no trânsito de Lisboa. Aulas em pista exclusiva para sua segurança.</p>
+                        
+                        <div class="price-block">
+                            <span class="old-price">Antes 450€</span>
+                            <div class="new-price">Formação desde <br><span class="highlight-price">390€</span></div>
+                            <span class="installments">Facilidades de pagamento ao longo das aulas</span>
+                            
+                            <a href="#" onclick="openWhatsApp('Orçamento Mota')" class="btn-cta" style="width: 100%; padding: 12px; font-size: 0.9rem;">Saber Mais (Mota)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fleet-card" style="border: 2px solid var(--primary-color);"> 
+                    <span class="discount-badge" style="background: var(--primary-color); color: #000;">MAIS PROCURADO</span>
+                    <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80" alt="Carta de Carro Lisboa" class="fleet-img">
+                    <div class="fleet-content">
+                        <h3 class="cat-title">Categoria B (Ligeiros)</h3>
+                        <p class="cat-desc">Medo de deixar o carro ir abaixo? As nossas viaturas têm <strong>Direção Assistida</strong> e ajudam no estacionamento.</p>
+                        
+                        <div class="price-block">
+                            <span class="old-price">Antes 690€</span>
+                            <div class="new-price">Formação desde <br><span class="highlight-price">590€</span></div>
+                            <span class="installments">Facilidades de pagamento ao longo das aulas</span>
+                            
+                            <a href="#" onclick="openWhatsApp('Orçamento Ligeiros')" class="btn-cta" style="width: 100%; padding: 12px; font-size: 0.9rem;">Saber Mais (Carro)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fleet-card">
+                    <span class="discount-badge" style="background: #000;">POUPE DINHEIRO</span>
+                    <img src="https://images.unsplash.com/photo-1463620695885-8ba91bce35f7?auto=format&fit=crop&w=800&q=80" alt="Carta A e B" class="fleet-img">
+                    <div class="fleet-content">
+                        <h3 class="cat-title">Categorias A + B</h3>
+                        <p class="cat-desc">A escolha inteligente. Tire as duas cartas ao mesmo tempo e poupe nas taxas do IMT.</p>
+                        
+                        <div class="price-block">
+                            <span class="old-price">Antes 950€</span>
+                            <div class="new-price">Combo desde <br><span class="highlight-price">850€</span></div>
+                            <span class="installments">Facilidades de pagamento ao longo das aulas</span>
+                            
+                            <a href="#" onclick="openWhatsApp('Orçamento Combo AB')" class="btn-cta" style="width: 100%; padding: 12px; font-size: 0.9rem;">Saber Mais (A+B)</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Porquê escolher a Via Segura?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">🧘</span>
+                    <h3>Instrutores de Excelência</h3>
+                    <p>Aqui ninguém grita. A nossa equipa tem formação para lidar com ansiedade e medo de conduzir.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">❄️</span>
+                    <h3>Viaturas Recentes</h3>
+                    <p>Aprenda a conduzir em viaturas a gasóleo/gasolina modernas com Direção Assistida e Ar Condicionado.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📅</span>
+                    <h3>Horários Pós-Laborais</h3>
+                    <p>Trabalha o dia todo? Temos aulas ao final do dia e aos sábados para encaixar na sua rotina.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📱</span>
+                    <h3>Testes no Telemóvel</h3>
+                    <p>Tenha acesso a milhares de perguntas e testes de código atualizados pelo IMT diretamente no seu telemóvel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-proof">
+        <div class="container">
+            <h2>Quem tirou a Carta connosco</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Tinha pânico do ponto de embraiagem nas subidas. O instrutor João teve imensa paciência. Hoje conduzo por toda a Segunda Circular sem stress. Recomendo muito!"</p>
+                    <div class="client-name">Lucas M. <span class="client-badge">Categoria B</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Pensei que tirar a carta agora ia ser um rombo no orçamento, mas as facilidades de ir pagando por fases ajudaram imenso."</p>
+                    <div class="client-name">Ana Clara <span class="client-badge">Categoria A+B</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Tinha receio de ir para a escola de condução já com os meus 55 anos. Trataram-me com imenso carinho. Realizei o sonho de ir às compras no meu próprio carro!"</p>
+                    <div class="client-name">Dona Maria <span class="client-badge">Categoria B</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container faq-container">
+            <h2>Perguntas Frequentes</h2>
+            
+            <details>
+                <summary>Posso pagar a carta em prestações?</summary>
+                <div class="faq-answer">
+                    Sim! Sabemos que é um investimento importante. Pode fasear o pagamento ao longo da sua formação sem juros (por exemplo: um valor na inscrição, outro antes de ir a código e o restante na condução). Aceitamos MB Way, Multibanco e Numerário.
+                </div>
+            </details>
+
+            <details>
+                <summary>Quanto tempo demora o processo?</summary>
+                <div class="faq-answer">
+                    A média é de 3 a 4 meses, mas depende totalmente da sua disponibilidade para marcar e frequentar as aulas teóricas e práticas, bem como da disponibilidade de vagas nos centros de exames.
+                </div>
+            </details>
+
+            <details>
+                <summary>O que está incluído no valor?</summary>
+                <div class="faq-answer">
+                    O valor apresentado inclui a inscrição na escola, todas as aulas teóricas obrigatórias e as aulas práticas exigidas por lei. As taxas do IMT (para a marcação dos exames e emissão da carta) e o atestado médico geralmente são cobrados à parte, mas nós tratamos de toda essa burocracia por si.
+                </div>
+            </details>
+
+            <details>
+                <summary>E se eu reprovar na prática?</summary>
+                <div class="faq-answer">
+                    Temos uma taxa de aprovação acima dos 90% logo à primeira. No entanto, se os nervos atrapalharem no dia do exame, dispomos de pacotes de aulas extra para garantir que vai a 100% à repetição.
+                </div>
+            </details>
+        </div>
+        
+        <div class="text-center" style="margin-top: 60px;">
+            <h3>Ainda com dúvidas sobre as inscrições?</h3>
+            <p style="margin-bottom: 20px;">Fale diretamente com a nossa secretaria e saiba como começar ainda hoje.</p>
+            <a href="#" onclick="openWhatsApp('Dúvida Secretaria')" class="btn-cta btn-outline">
+                💬 Falar com a Secretaria
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="bold">Escola de Condução Via Segura - Lisboa</p>
+            <p style="font-size: 0.8rem; margin-top: 10px;">Alvará do IMT nº 1234 | NIF: 500 000 000 | © 2026 Todos os direitos reservados.</p>
+            <p style="font-size: 0.8rem; color: #555; margin-top: 10px;">*Valores sujeitos a alteração. Consulte as condições de facilidade de pagamento diretamente na escola.</p>
+        </div>
+    </footer>
+
+    <div class="floating-wpp-container">
+        <div class="wpp-tooltip">Dúvidas? Fale connosco!</div>
+        <a href="#" onclick="openWhatsApp('Botão Flutuante')" class="floating-wpp" title="Falar no WhatsApp" aria-label="Falar no WhatsApp">
+            <svg class="wpp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+        </a>
+    </div>
+
+    <script>
+        function openWhatsApp(origem) {
+            // Número da Escola de Condução em Portugal (Código do País 351 + Número)
+            const phoneNumber = "351912345678"; 
+            
+            let text = "";
+
+            // Personaliza a mensagem com o vocabulário de PT-PT
+            if(origem.includes('Mota')) {
+                text = "Olá! Vi o site e gostava de saber mais sobre a Carta de Mota (Categoria A). Como funcionam os pagamentos?";
+            } else if(origem.includes('Ligeiros') || origem.includes('Carro')) {
+                text = "Olá! Tenho interesse na Carta de Ligeiros (Categoria B). Gostaria de simular as facilidades de pagamento.";
+            } else if(origem.includes('Combo')) {
+                text = "Bom dia! Quero aproveitar o desconto de tirar as categorias A e B em conjunto. Podem ajudar-me?";
+            } else if(origem.includes('Pagamento')) {
+                text = "Olá, gostaria de saber como funcionam as facilidades de pagamento (prestações) para tirar a carta.";
+            } else {
+                text = "Olá! Vi as informações no site e gostaria de tirar algumas dúvidas sobre as inscrições.";
+            }
+
+            const message = encodeURIComponent(text);
+            const url = `https://wa.me/${phoneNumber}?text=${message}`;
+            
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
